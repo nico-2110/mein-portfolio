@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Nico Video Editor</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-en">
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="page-transition" id="pageTransition"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav class="nav scrolled" id="nav">
+    <a href="/" class="nav-logo" data-transition>NICO<span>.</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link" data-transition><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+      <a href="/projects" class="nav-link active" data-transition><span data-lang="en">Projects</span><span data-lang="de">Projekte</span></a>
+      <a href="/contact" class="nav-link" data-transition><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-set-lang="en">EN</button>
+        <button class="lang-btn" data-set-lang="de">DE</button>
+      </div>
+      <a href="/contact" class="nav-cta" data-transition><span data-lang="en">Let's work</span><span data-lang="de">Zusammenarbeiten</span></a>
+    </div>
+    <button class="nav-menu-btn" id="menuBtn"><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/" class="mobile-link" data-transition><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+    <a href="/projects" class="mobile-link" data-transition><span data-lang="en">Projects</span><span data-lang="de">Projekte</span></a>
+    <a href="/contact" class="mobile-link" data-transition><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+    <div class="mobile-lang">
+      <button class="mobile-lang-btn active" data-set-lang="en">EN</button>
+      <button class="mobile-lang-btn" data-set-lang="de">DE</button>
+    </div>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-glow"></div>
+    <div class="tag anim-up" style="animation-delay:.1s"><span data-lang="en">Portfolio</span><span data-lang="de">Portfolio</span></div>
+    <h1 class="heading anim-up" style="animation-delay:.22s">
+      <span data-lang="en">All <em>Projects</em></span>
+      <span data-lang="de">Alle <em>Projekte</em></span>
+    </h1>
+    <p class="sub anim-up" style="animation-delay:.36s">
+      <span data-lang="en">Reels, Podcast and Personal Brand — crafted with purpose.</span>
+      <span data-lang="de">Reels, Podcast und Personal Brand — mit Sorgfalt gemacht.</span>
+    </p>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="projects-header">
+    <div class="filter-row">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">
+          <span data-lang="en">All</span><span data-lang="de">Alle</span>
+        </button>
+        <button class="filter-tab" data-filter="Reels">Reels</button>
+        <button class="filter-tab" data-filter="Podcast">Podcast</button>
+        <button class="filter-tab" data-filter="Personal Brand">Personal Brand</button>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search projects…">
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-section">
+    <div class="projects-grid" id="projectsGrid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p><span data-lang="en">Loading projects…</span><span data-lang="de">Projekte werden geladen…</span></p>
+      </div>
+    </div>
+    <div id="noResults" class="no-results" style="display:none">
+      <p><span data-lang="en">No projects found. Try a different filter or search term.</span><span data-lang="de">Keine Projekte gefunden. Versuche einen anderen Filter oder Suchbegriff.</span></p>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-bg" id="lightboxBg"></div>
+    <div class="lightbox-wrap">
+      <button class="lightbox-close" id="lightboxClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <div class="lightbox-video"><video id="lightboxVideo" controls playsinline></video></div>
+      <div class="lightbox-info">
+        <span class="lb-cat" id="lbCat"></span>
+        <h2 class="lb-title" id="lbTitle"></h2>
+        <p class="lb-desc" id="lbDesc"></p>
+        <div class="lb-client" id="lbClientWrap"><span data-lang="en">Client:</span><span data-lang="de">Kunde:</span> <strong id="lbClient"></strong></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">NICO<span>.</span></div>
+      <div class="footer-links">
+        <a href="/" data-transition><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+        <a href="/projects" data-transition><span data-lang="en">Projects</span><span data-lang="de">Projekte</span></a>
+        <a href="/contact" data-transition><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+      </div>
+      <p class="footer-copy">© 2025 Nico. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/projects.js"></script>
+</body>
+</html>

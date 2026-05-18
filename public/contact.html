@@ -3,124 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — YOUR.NAME Video Editor</title>
+  <title>Contact — Nico Video Editor</title>
   <link rel="stylesheet" href="/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body class="lang-en">
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="page-transition" id="pageTransition"></div>
   <div class="cursor" id="cursor"></div>
-  <div class="cursor-follower" id="cursorFollower"></div>
-  <nav class="nav" id="nav">
-    <a href="/" class="nav-logo">YOUR<span class="logo-dot">.</span>NAME</a>
-    <div class="nav-center">
-      <a href="/" class="nav-link"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
-      <a href="/work" class="nav-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
-      <a href="/contact" class="nav-link active"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav class="nav scrolled" id="nav">
+    <a href="/" class="nav-logo" data-transition>NICO<span>.</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link" data-transition><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+      <a href="/projects" class="nav-link" data-transition><span data-lang="en">Projects</span><span data-lang="de">Projekte</span></a>
+      <a href="/contact" class="nav-link active" data-transition><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
     </div>
     <div class="nav-right">
       <div class="lang-toggle">
         <button class="lang-btn active" data-set-lang="en">EN</button>
         <button class="lang-btn" data-set-lang="de">DE</button>
       </div>
-      <a href="/contact" class="nav-cta"><span data-lang="en">Get in touch</span><span data-lang="de">Kontakt</span></a>
+      <a href="/contact" class="nav-cta" data-transition><span data-lang="en">Let's work</span><span data-lang="de">Zusammenarbeiten</span></a>
     </div>
     <button class="nav-menu-btn" id="menuBtn"><span></span><span></span></button>
   </nav>
+
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/" class="mobile-link"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
-    <a href="/work" class="mobile-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
-    <a href="/contact" class="mobile-link"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+    <a href="/" class="mobile-link" data-transition><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+    <a href="/projects" class="mobile-link" data-transition><span data-lang="en">Projects</span><span data-lang="de">Projekte</span></a>
+    <a href="/contact" class="mobile-link" data-transition><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
     <div class="mobile-lang">
       <button class="mobile-lang-btn active" data-set-lang="en">EN</button>
       <button class="mobile-lang-btn" data-set-lang="de">DE</button>
     </div>
   </div>
+
   <section class="page-hero">
-    <div class="page-hero-spot">
-      <svg viewBox="0 0 3787 2842" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-        <g filter="url(#sf3)"><ellipse cx="1924" cy="273" rx="1924" ry="273" transform="matrix(-0.822 -0.569 -0.569 0.822 3631 2291)" fill="#bdee63"/></g>
-        <defs><filter id="sf3" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="180"/></filter></defs>
-      </svg>
-    </div>
-    <div class="section-tag animate-in" style="animation-delay:.1s"><span data-lang="en">Let's Connect</span><span data-lang="de">Schreib mir</span></div>
-    <h1 class="page-title animate-in" style="animation-delay:.22s">
-      <span data-lang="en">Got a project<br><em style="color:var(--accent)">in mind?</em></span>
-      <span data-lang="de">Hast du ein Projekt<br><em style="color:var(--accent)">im Sinn?</em></span>
+    <div class="page-hero-glow"></div>
+    <div class="tag anim-up" style="animation-delay:.1s"><span data-lang="en">Get in touch</span><span data-lang="de">Kontakt aufnehmen</span></div>
+    <h1 class="heading anim-up" style="animation-delay:.22s">
+      <span data-lang="en">Let's create<br><em>something great.</em></span>
+      <span data-lang="de">Lass uns etwas<br><em>Großartiges schaffen.</em></span>
     </h1>
-    <p class="page-subtitle animate-in" style="animation-delay:.36s">
-      <span data-lang="en">I'm always happy to hear about new projects — no matter how big or small.</span>
-      <span data-lang="de">Ich freue mich über jede Anfrage — egal wie groß oder klein das Projekt ist.</span>
+    <p class="sub anim-up" style="animation-delay:.36s">
+      <span data-lang="en">Have a project in mind? I'd love to hear about it.</span>
+      <span data-lang="de">Hast du ein Projekt im Sinn? Ich würde gerne davon hören.</span>
     </p>
   </section>
-  <section class="contact-section">
+
+  <section class="section">
     <div class="contact-layout">
-      <div class="contact-info reveal-left">
-        <h3><span data-lang="en">Let's work<br>together.</span><span data-lang="de">Lass uns<br>zusammenarbeiten.</span></h3>
-        <p><span data-lang="en">Whether it's a commercial, music video, documentary, or social media content — I listen carefully and bring your vision to life with precision.</span><span data-lang="de">Ob Werbefilm, Musikvideo, Dokumentation oder Social-Media-Content — ich höre zu und setze deine Vision präzise und mit Leidenschaft um.</span></p>
-        <div class="contact-details">
+      <div class="reveal-l">
+        <h3 class="contact-info" style="font-family:var(--font-d);font-size:2rem;font-weight:800;color:var(--white);line-height:1.1;margin-bottom:20px">
+          <span data-lang="en">Ready to work<br>together?</span>
+          <span data-lang="de">Bereit, zusammen<br>zu arbeiten?</span>
+        </h3>
+        <p style="color:var(--text-2);font-size:.93rem;line-height:1.85;margin-bottom:44px">
+          <span data-lang="en">Whether it's a Reel, a Podcast, or a full Personal Brand campaign — I'm here to bring your vision to life.</span>
+          <span data-lang="de">Ob Reel, Podcast oder eine vollständige Personal Brand Kampagne — ich bin hier, um deine Vision zum Leben zu erwecken.</span>
+        </p>
+        <div class="contact-items">
           <div class="contact-item">
             <div class="contact-icon">✉</div>
-            <div><span class="contact-label">Email</span><a href="mailto:hello@yourname.com" class="contact-value">hello@yourname.com</a></div>
+            <div>
+              <span class="c-label">Email</span>
+              <a href="mailto:hello@nico.com" class="c-value">hello@nico.com</a>
+            </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">📍</div>
-            <div><span class="contact-label"><span data-lang="en">Location</span><span data-lang="de">Standort</span></span><span class="contact-value">Berlin, Germany</span></div>
+            <div>
+              <span class="c-label"><span data-lang="en">Location</span><span data-lang="de">Standort</span></span>
+              <span class="c-value">Berlin, Germany</span>
+            </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">⏱</div>
-            <div><span class="contact-label"><span data-lang="en">Response time</span><span data-lang="de">Antwortzeit</span></span><span class="contact-value"><span data-lang="en">Within 24 hours</span><span data-lang="de">Innerhalb 24 Stunden</span></span></div>
+            <div>
+              <span class="c-label"><span data-lang="en">Response time</span><span data-lang="de">Antwortzeit</span></span>
+              <span class="c-value"><span data-lang="en">Within 24 hours</span><span data-lang="de">Innerhalb 24 Stunden</span></span>
+            </div>
           </div>
         </div>
-        <div class="contact-social">
+        <div class="socials">
           <a href="#" class="social-link" target="_blank">Instagram</a>
-          <a href="#" class="social-link" target="_blank">Vimeo</a>
+          <a href="#" class="social-link" target="_blank">TikTok</a>
           <a href="#" class="social-link" target="_blank">LinkedIn</a>
+          <a href="#" class="social-link" target="_blank">YouTube</a>
         </div>
       </div>
-      <div class="contact-form-wrap reveal-right">
-        <div id="formSuccess" class="form-success" style="display:none">
-          <div class="success-icon">✓</div>
+
+      <div class="contact-form reveal-r">
+        <div id="formSuccess" class="form-success-state" style="display:none">
+          <div class="success-check">✓</div>
           <h3><span data-lang="en">Message sent!</span><span data-lang="de">Nachricht gesendet!</span></h3>
           <p><span data-lang="en">I'll get back to you as soon as possible.</span><span data-lang="de">Ich melde mich so schnell wie möglich.</span></p>
         </div>
         <div id="formWrap">
           <div class="form-row">
-            <div class="form-group"><label><span data-lang="en">Name *</span><span data-lang="de">Name *</span></label><input type="text" id="name" placeholder="Your name" required></div>
-            <div class="form-group"><label>Email *</label><input type="email" id="email" placeholder="your@email.com" required></div>
+            <div class="form-group">
+              <label><span data-lang="en">Name *</span><span data-lang="de">Name *</span></label>
+              <input type="text" id="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
           </div>
           <div class="form-group">
             <label><span data-lang="en">Project type</span><span data-lang="de">Projektart</span></label>
             <select id="project">
-              <option value=""><span data-lang="en">Please select</span><span data-lang="de">Bitte wählen</span></option>
-              <option value="Commercial">Commercial / Werbefilm</option>
-              <option value="Music Video">Music Video / Musikvideo</option>
-              <option value="Documentary">Documentary / Dokumentation</option>
-              <option value="Social Media">Social Media Content</option>
+              <option value=""><span data-lang="en">Select a category</span><span data-lang="de">Kategorie wählen</span></option>
+              <option value="Reels">Reels</option>
+              <option value="Podcast">Podcast</option>
+              <option value="Personal Brand">Personal Brand</option>
               <option value="Other"><span data-lang="en">Other</span><span data-lang="de">Sonstiges</span></option>
             </select>
           </div>
-          <div class="form-group"><label><span data-lang="en">Message *</span><span data-lang="de">Nachricht *</span></label><textarea id="message" rows="5" placeholder="Tell me about your project…"></textarea></div>
+          <div class="form-group">
+            <label><span data-lang="en">Message *</span><span data-lang="de">Nachricht *</span></label>
+            <textarea id="message" rows="5" placeholder="Tell me about your project…"></textarea>
+          </div>
           <div id="formError" class="form-error" style="display:none"></div>
-          <button class="btn-primary btn-submit" id="submitBtn">
-            <span data-lang="en">Send Message</span><span data-lang="de">Nachricht senden</span>
+          <button class="btn btn-primary form-submit" id="submitBtn">
+            <span data-lang="en">Send Message</span>
+            <span data-lang="de">Nachricht senden</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
       </div>
     </div>
   </section>
+
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-logo">YOUR<span>.</span>NAME</div>
-      <p class="footer-tagline"><span data-lang="en">Making every frame count.</span><span data-lang="de">Jedes Bild zählt.</span></p>
+      <div class="footer-logo">NICO<span>.</span></div>
       <div class="footer-links">
-        <a href="/"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
-        <a href="/work"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
-        <a href="/contact"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+        <a href="/" data-transition><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+        <a href="/projects" data-transition><span data-lang="en">Projects</span><span data-lang="de">Projekte</span></a>
+        <a href="/contact" data-transition><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
       </div>
-      <p class="footer-copy">© 2025 YourName. All rights reserved.</p>
+      <p class="footer-copy">© 2025 Nico. All rights reserved.</p>
     </div>
   </footer>
+
   <script src="/js/main.js"></script>
   <script src="/js/contact.js"></script>
 </body>
