@@ -1,89 +1,118 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Video Editor</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="lang-en">
 
-  <!-- Custom Cursor -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
-
-  <!-- Grain Overlay -->
   <div class="grain"></div>
 
-  <!-- Navigation -->
+  <!-- Nav -->
   <nav class="nav" id="nav">
-    <a href="/" class="nav-logo">
-      <span class="logo-text">YOUR<span class="logo-accent">NAME</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="/" class="nav-link active">Home</a>
-      <a href="/work" class="nav-link">Work</a>
-      <a href="/contact" class="nav-link">Contact</a>
+    <a href="/" class="nav-logo">YOUR<span class="logo-dot">.</span>NAME</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="/" class="nav-link active"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+        <a href="/work" class="nav-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+        <a href="/contact" class="nav-link"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-set-lang="en">EN</button>
+        <button class="lang-btn" data-set-lang="de">DE</button>
+      </div>
     </div>
-    <button class="nav-menu-btn" id="menuBtn">
-      <span></span><span></span>
-    </button>
+    <button class="nav-menu-btn" id="menuBtn"><span></span><span></span></button>
   </nav>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/" class="mobile-link">Home</a>
-    <a href="/work" class="mobile-link">Work</a>
-    <a href="/contact" class="mobile-link">Contact</a>
+    <a href="/" class="mobile-link"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+    <a href="/work" class="mobile-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+    <a href="/contact" class="mobile-link"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+    <div class="mobile-lang">
+      <button class="mobile-lang-btn active" data-set-lang="en">EN</button>
+      <button class="mobile-lang-btn" data-set-lang="de">DE</button>
+    </div>
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-bg">
-      <div class="hero-gradient"></div>
-      <div class="hero-lines"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-grid"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-tag animate-in" style="animation-delay:0.2s">
-        <span class="dot"></span> Available for projects
+      <div class="hero-badge animate-in" style="animation-delay:.1s">
+        <span class="dot"></span>
+        <span data-lang="en">Available for new projects</span>
+        <span data-lang="de">Offen für neue Projekte</span>
       </div>
-      <h1 class="hero-title animate-in" style="animation-delay:0.4s">
-        Crafting stories<br>
-        <span class="title-outline">frame by frame.</span>
+      <h1 class="hero-title animate-in" style="animation-delay:.25s">
+        <span data-lang="en">Crafting stories<br><em>frame by frame.</em></span>
+        <span data-lang="de">Geschichten erzählen<br><em>Bild für Bild.</em></span>
       </h1>
-      <p class="hero-subtitle animate-in" style="animation-delay:0.6s">
-        Video Editor — Turning raw footage into<br>cinematic experiences that move people.
+      <p class="hero-subtitle animate-in" style="animation-delay:.4s">
+        <span data-lang="en">Video Editor — turning raw footage into cinematic experiences that move people and leave a lasting impression.</span>
+        <span data-lang="de">Videoeditor — Rohmaterial wird zu cinematischen Erlebnissen, die Menschen bewegen und in Erinnerung bleiben.</span>
       </p>
-      <div class="hero-cta animate-in" style="animation-delay:0.8s">
+      <div class="hero-cta animate-in" style="animation-delay:.55s">
         <a href="/work" class="btn-primary">
-          <span>View My Work</span>
+          <span data-lang="en">View My Work</span>
+          <span data-lang="de">Meine Projekte</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="/contact" class="btn-ghost">Let's Talk</a>
+        <a href="/contact" class="btn-ghost">
+          <span data-lang="en">Let's Talk</span>
+          <span data-lang="de">Kontakt aufnehmen</span>
+        </a>
       </div>
     </div>
-    <div class="hero-scroll animate-in" style="animation-delay:1.2s">
-      <div class="scroll-line"></div>
+    <div class="hero-scroll animate-in" style="animation-delay:.9s">
+      <div class="scroll-track"></div>
       <span>Scroll</span>
     </div>
   </section>
 
-  <!-- Stats Section -->
+  <!-- Marquee -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Commercial Editing <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Music Videos <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Documentary <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Social Media Content <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Color Grading <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Motion Graphics <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Commercial Editing <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Music Videos <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Documentary <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Social Media Content <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Color Grading <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Motion Graphics <span class="marquee-sep">✦</span></span>
+    </div>
+  </div>
+
+  <!-- Stats -->
   <section class="stats reveal">
-    <div class="stats-grid">
+    <div class="stats-inner">
       <div class="stat-item">
-        <span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span>
-        <p>Projekte abgeschlossen</p>
+        <div class="stat-number"><span class="stat-count" data-count="50">0</span><span class="stat-plus">+</span></div>
+        <p class="stat-label"><span data-lang="en">Projects completed</span><span data-lang="de">Projekte abgeschlossen</span></p>
       </div>
       <div class="stat-item">
-        <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
-        <p>Jahre Erfahrung</p>
+        <div class="stat-number"><span class="stat-count" data-count="5">0</span><span class="stat-plus">+</span></div>
+        <p class="stat-label"><span data-lang="en">Years of experience</span><span data-lang="de">Jahre Erfahrung</span></p>
       </div>
       <div class="stat-item">
-        <span class="stat-number" data-count="30">0</span><span class="stat-plus">+</span>
-        <p>Zufriedene Kunden</p>
+        <div class="stat-number"><span class="stat-count" data-count="30">0</span><span class="stat-plus">+</span></div>
+        <p class="stat-label"><span data-lang="en">Happy clients</span><span data-lang="de">Zufriedene Kunden</span></p>
       </div>
     </div>
   </section>
@@ -91,44 +120,52 @@
   <!-- Featured Work -->
   <section class="featured reveal">
     <div class="section-header">
-      <span class="section-tag">Selected Work</span>
-      <h2 class="section-title">Recent Projects</h2>
+      <div class="section-tag"><span data-lang="en">Selected Work</span><span data-lang="de">Ausgewählte Projekte</span></div>
+      <h2 class="section-title">
+        <span data-lang="en">Recent <em>Projects</em></span>
+        <span data-lang="de">Aktuelle <em>Projekte</em></span>
+      </h2>
     </div>
     <div class="featured-grid" id="featuredGrid">
-      <!-- dynamisch via JS -->
       <div class="loading-skeleton"></div>
       <div class="loading-skeleton"></div>
       <div class="loading-skeleton"></div>
     </div>
     <div class="featured-footer">
       <a href="/work" class="btn-outline">
-        <span>All Projects</span>
+        <span data-lang="en">All Projects</span>
+        <span data-lang="de">Alle Projekte</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </section>
 
   <!-- About Teaser -->
-  <section class="about-teaser reveal">
-    <div class="about-visual">
+  <section class="about-teaser">
+    <div class="about-visual reveal-left">
       <div class="about-frame">
-        <div class="frame-inner">
-          <div class="frame-text">
-            <span>VIDEO</span>
-            <span>EDITING</span>
-            <span>SINCE</span>
-            <span class="frame-year">2019</span>
-          </div>
+        <div class="about-frame-inner">
+          <div class="frame-word">Video</div>
+          <div class="frame-word">Editing</div>
+          <div class="frame-word">Since</div>
+          <div class="frame-word accent">2019</div>
         </div>
       </div>
+      <div class="about-deco"></div>
     </div>
-    <div class="about-content">
-      <span class="section-tag">About</span>
-      <h2 class="section-title">Passion for the<br><em>perfect cut.</em></h2>
-      <p>Ich bin Videoeditor mit einem Gespür für Rhythmus, Pacing und visuelles Storytelling. Jedes Projekt ist für mich mehr als nur Schnitt — es ist das Erschaffen einer Emotion.</p>
-      <p>Von Werbefilmen über Musikvideos bis hin zu Dokumentationen — ich bringe deine Vision auf den Punkt.</p>
+    <div class="about-content reveal-right">
+      <div class="section-tag"><span data-lang="en">About Me</span><span data-lang="de">Über mich</span></div>
+      <h2 class="section-title">
+        <span data-lang="en">A passion for the<br><em>perfect cut.</em></span>
+        <span data-lang="de">Eine Leidenschaft für<br><em>den perfekten Schnitt.</em></span>
+      </h2>
+      <p data-lang="en">I'm a video editor with a sharp sense for rhythm, pacing, and visual storytelling. Every project is more than just cutting — it's creating an emotion that resonates.</p>
+      <p data-lang="de">Ich bin Videoeditor mit einem ausgeprägten Gespür für Rhythmus, Pacing und visuelles Storytelling. Jedes Projekt ist mehr als nur Schnitt — es geht darum, eine Emotion zu erschaffen.</p>
+      <p data-lang="en">From commercials to music videos and documentaries — I bring your vision to life with precision and care.</p>
+      <p data-lang="de">Von Werbefilmen über Musikvideos bis hin zu Dokumentationen — ich setze deine Vision präzise und leidenschaftlich um.</p>
       <a href="/contact" class="btn-primary">
-        <span>Projekt anfragen</span>
+        <span data-lang="en">Start a Project</span>
+        <span data-lang="de">Projekt anfragen</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -137,42 +174,70 @@
   <!-- Services -->
   <section class="services reveal">
     <div class="section-header">
-      <span class="section-tag">Services</span>
-      <h2 class="section-title">What I Do</h2>
+      <div class="section-tag">Services</div>
+      <h2 class="section-title">
+        <span data-lang="en">What I <em>Do</em></span>
+        <span data-lang="de">Was ich <em>biete</em></span>
+      </h2>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal-card">
+      <div class="service-card">
         <div class="service-icon">✦</div>
-        <h3>Commercial Editing</h3>
-        <p>Werbefilme & Brand Content mit maximalem Impact</p>
+        <h3><span data-lang="en">Commercial Editing</span><span data-lang="de">Werbefilm-Schnitt</span></h3>
+        <p><span data-lang="en">High-impact commercials and brand content with maximum visual power.</span><span data-lang="de">Wirkungsstarke Werbefilme und Brand-Content mit maximalem visuellen Eindruck.</span></p>
       </div>
-      <div class="service-card reveal-card">
+      <div class="service-card">
         <div class="service-icon">◈</div>
         <h3>Music Videos</h3>
-        <p>Visuelle Welten die deinen Sound perfekt ergänzen</p>
+        <p><span data-lang="en">Visual worlds that perfectly complement and amplify your sound.</span><span data-lang="de">Visuelle Welten, die deinen Sound perfekt ergänzen und verstärken.</span></p>
       </div>
-      <div class="service-card reveal-card">
+      <div class="service-card">
         <div class="service-icon">◇</div>
         <h3>Documentary</h3>
-        <p>Authentisches Storytelling das berührt und bewegt</p>
+        <p><span data-lang="en">Authentic storytelling that genuinely moves and inspires audiences.</span><span data-lang="de">Authentisches Storytelling, das Zuschauer wirklich bewegt und inspiriert.</span></p>
       </div>
-      <div class="service-card reveal-card">
+      <div class="service-card">
         <div class="service-icon">❋</div>
         <h3>Social Media</h3>
-        <p>Optimierte Kurzformate für maximale Reichweite</p>
+        <p><span data-lang="en">Optimised short-form content for maximum reach and engagement.</span><span data-lang="de">Optimierte Kurzformate für maximale Reichweite und Interaktion.</span></p>
       </div>
     </div>
   </section>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-overlay" id="lightboxOverlay"></div>
+    <div class="lightbox-container">
+      <button class="lightbox-close" id="lightboxClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="lightbox-video-wrap"><video id="lightboxVideo" controls playsinline></video></div>
+      <div class="lightbox-info">
+        <div class="lightbox-meta">
+          <span class="lightbox-category" id="lightboxCategory"></span>
+          <span class="lightbox-year" id="lightboxYear"></span>
+        </div>
+        <h2 class="lightbox-title" id="lightboxTitle"></h2>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+        <div class="lightbox-client" id="lightboxClientWrap">
+          <span data-lang="en">Client:</span><span data-lang="de">Kunde:</span> <strong id="lightboxClient"></strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">YOUR<span>NAME</span></div>
-      <p class="footer-tagline">Making every frame count.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">YOUR<span>.</span>NAME</div>
+      <p class="footer-tagline">
+        <span data-lang="en">Making every frame count.</span>
+        <span data-lang="de">Jedes Bild zählt.</span>
+      </p>
       <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/work">Work</a>
-        <a href="/contact">Contact</a>
+        <a href="/"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+        <a href="/work"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+        <a href="/contact"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
       </div>
       <p class="footer-copy">© 2025 YourName. All rights reserved.</p>
     </div>

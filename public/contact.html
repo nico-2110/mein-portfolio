@@ -1,78 +1,86 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Video Editor Portfolio</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="lang-en">
 
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
   <div class="grain"></div>
 
   <nav class="nav" id="nav">
-    <a href="/" class="nav-logo">
-      <span class="logo-text">YOUR<span class="logo-accent">NAME</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/work" class="nav-link">Work</a>
-      <a href="/contact" class="nav-link active">Contact</a>
+    <a href="/" class="nav-logo">YOUR<span class="logo-dot">.</span>NAME</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="/" class="nav-link"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+        <a href="/work" class="nav-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+        <a href="/contact" class="nav-link active"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-set-lang="en">EN</button>
+        <button class="lang-btn" data-set-lang="de">DE</button>
+      </div>
     </div>
     <button class="nav-menu-btn" id="menuBtn"><span></span><span></span></button>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/" class="mobile-link">Home</a>
-    <a href="/work" class="mobile-link">Work</a>
-    <a href="/contact" class="mobile-link">Contact</a>
+    <a href="/" class="mobile-link"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+    <a href="/work" class="mobile-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+    <a href="/contact" class="mobile-link"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+    <div class="mobile-lang">
+      <button class="mobile-lang-btn active" data-set-lang="en">EN</button>
+      <button class="mobile-lang-btn" data-set-lang="de">DE</button>
+    </div>
   </div>
 
-  <!-- Page Hero -->
   <section class="page-hero">
-    <div class="page-hero-content">
-      <span class="section-tag animate-in" style="animation-delay:0.2s">Let's Connect</span>
-      <h1 class="page-title animate-in" style="animation-delay:0.4s">
-        Got a project<br><span class="title-outline">in mind?</span>
-      </h1>
-      <p class="page-subtitle animate-in" style="animation-delay:0.6s">
-        Ich freue mich über jede Anfrage — egal wie groß oder klein.
-      </p>
-    </div>
+    <div class="page-hero-orb"></div>
+    <span class="section-tag animate-in" style="animation-delay:.1s"><span data-lang="en">Let's Connect</span><span data-lang="de">Schreib mir</span></span>
+    <h1 class="page-title animate-in" style="animation-delay:.25s">
+      <span data-lang="en">Got a project<br><em>in mind?</em></span>
+      <span data-lang="de">Hast du ein Projekt<br><em>im Sinn?</em></span>
+    </h1>
+    <p class="page-subtitle animate-in" style="animation-delay:.4s">
+      <span data-lang="en">I'm always happy to hear about new projects — no matter how big or small.</span>
+      <span data-lang="de">Ich freue mich über jede Anfrage — egal wie groß oder klein das Projekt ist.</span>
+    </p>
   </section>
 
-  <!-- Contact Section -->
   <section class="contact-section">
     <div class="contact-layout">
-
-      <!-- Info Side -->
-      <div class="contact-info reveal">
-        <h3>Let's work together</h3>
-        <p>Ob Werbeclip, Musikvideo, Dokumentation oder Social-Media-Content — ich höre dir zu und setze deine Vision präzise um.</p>
+      <div class="contact-info reveal-left">
+        <h3><span data-lang="en">Let's work<br>together.</span><span data-lang="de">Lass uns<br>zusammenarbeiten.</span></h3>
+        <p>
+          <span data-lang="en">Whether it's a commercial, music video, documentary, or social media content — I listen carefully and bring your vision to life with precision.</span>
+          <span data-lang="de">Ob Werbefilm, Musikvideo, Dokumentation oder Social-Media-Content — ich höre zu und setze deine Vision präzise und mit Leidenschaft um.</span>
+        </p>
         <div class="contact-details">
           <div class="contact-item">
             <div class="contact-icon">✉</div>
             <div>
-              <span class="contact-label">E-Mail</span>
-              <a href="mailto:deine@email.com" class="contact-value">deine@email.com</a>
+              <span class="contact-label">Email</span>
+              <a href="mailto:hello@yourname.com" class="contact-value">hello@yourname.com</a>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">📍</div>
             <div>
-              <span class="contact-label">Location</span>
-              <span class="contact-value">Berlin, Deutschland</span>
+              <span class="contact-label"><span data-lang="en">Location</span><span data-lang="de">Standort</span></span>
+              <span class="contact-value">Berlin, Germany</span>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">⏱</div>
             <div>
-              <span class="contact-label">Response Time</span>
-              <span class="contact-value">Innerhalb 24h</span>
+              <span class="contact-label"><span data-lang="en">Response Time</span><span data-lang="de">Antwortzeit</span></span>
+              <span class="contact-value"><span data-lang="en">Within 24 hours</span><span data-lang="de">Innerhalb 24 Stunden</span></span>
             </div>
           </div>
         </div>
@@ -83,58 +91,57 @@
         </div>
       </div>
 
-      <!-- Form Side -->
-      <div class="contact-form-wrap reveal">
+      <div class="contact-form-wrap reveal-right">
         <div id="formSuccess" class="form-success" style="display:none">
           <div class="success-icon">✓</div>
-          <h3>Nachricht gesendet!</h3>
-          <p>Ich melde mich so schnell wie möglich.</p>
+          <h3><span data-lang="en">Message sent!</span><span data-lang="de">Nachricht gesendet!</span></h3>
+          <p><span data-lang="en">I'll get back to you as soon as possible.</span><span data-lang="de">Ich melde mich so schnell wie möglich.</span></p>
         </div>
         <div id="formWrap">
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Name *</label>
-              <input type="text" id="name" placeholder="Dein Name" required>
+              <label for="name"><span data-lang="en">Name *</span><span data-lang="de">Name *</span></label>
+              <input type="text" id="name" placeholder="Your name" required>
             </div>
             <div class="form-group">
-              <label for="email">E-Mail *</label>
-              <input type="email" id="email" placeholder="deine@email.com" required>
+              <label for="email">Email *</label>
+              <input type="email" id="email" placeholder="your@email.com" required>
             </div>
           </div>
           <div class="form-group">
-            <label for="project">Projekttyp</label>
+            <label for="project"><span data-lang="en">Project Type</span><span data-lang="de">Projektart</span></label>
             <select id="project">
-              <option value="">Bitte auswählen</option>
+              <option value=""><span data-lang="en">Please select</span><span data-lang="de">Bitte wählen</span></option>
               <option value="Commercial">Commercial / Werbefilm</option>
-              <option value="Music Video">Musikvideo</option>
-              <option value="Documentary">Dokumentation</option>
+              <option value="Music Video">Music Video / Musikvideo</option>
+              <option value="Documentary">Documentary / Dokumentation</option>
               <option value="Social Media">Social Media Content</option>
-              <option value="Other">Sonstiges</option>
+              <option value="Other"><span data-lang="en">Other</span><span data-lang="de">Sonstiges</span></option>
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Nachricht *</label>
-            <textarea id="message" rows="5" placeholder="Erzähl mir von deinem Projekt..."></textarea>
+            <label for="message"><span data-lang="en">Message *</span><span data-lang="de">Nachricht *</span></label>
+            <textarea id="message" rows="5" placeholder="Tell me about your project…"></textarea>
           </div>
           <div id="formError" class="form-error" style="display:none"></div>
           <button class="btn-primary btn-submit" id="submitBtn">
-            <span>Nachricht senden</span>
+            <span data-lang="en">Send Message</span>
+            <span data-lang="de">Nachricht senden</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
       </div>
-
     </div>
   </section>
 
   <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">YOUR<span>NAME</span></div>
-      <p class="footer-tagline">Making every frame count.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">YOUR<span>.</span>NAME</div>
+      <p class="footer-tagline"><span data-lang="en">Making every frame count.</span><span data-lang="de">Jedes Bild zählt.</span></p>
       <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/work">Work</a>
-        <a href="/contact">Contact</a>
+        <a href="/"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+        <a href="/work"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+        <a href="/contact"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
       </div>
       <p class="footer-copy">© 2025 YourName. All rights reserved.</p>
     </div>

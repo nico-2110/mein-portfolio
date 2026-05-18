@@ -1,38 +1,53 @@
-// ── Custom Cursor ──────────────────────────────────────────────────────────
+// ── Language System ───────────────────────────────────────────────────────
+const savedLang = localStorage.getItem('lang') || 'en';
+setLang(savedLang, false);
+
+function setLang(lang, save = true) {
+  document.body.classList.remove('lang-en', 'lang-de');
+  document.body.classList.add('lang-' + lang);
+  if (save) localStorage.setItem('lang', lang);
+
+  document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.setLang === lang);
+  });
+}
+
+document.querySelectorAll('[data-set-lang]').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.setLang));
+});
+
+// ── Custom Cursor ─────────────────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursorFollower');
-let mouseX = 0, mouseY = 0;
-let followerX = 0, followerY = 0;
+let mx = 0, my = 0, fx = 0, fy = 0;
 
 if (cursor && follower) {
   document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
   });
 
-  const links = document.querySelectorAll('a, button, .video-card, .filter-btn, .service-card');
-  links.forEach(el => {
+  const hoverEls = document.querySelectorAll('a, button, .video-card, .filter-btn, .service-card, .lang-btn, .mobile-lang-btn');
+  hoverEls.forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
   });
 
-  function animateCursor() {
-    followerX += (mouseX - followerX) * 0.1;
-    followerY += (mouseY - followerY) * 0.1;
-    follower.style.left = followerX + 'px';
-    follower.style.top = followerY + 'px';
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
+  (function animCursor() {
+    fx += (mx - fx) * 0.1;
+    fy += (my - fy) * 0.1;
+    follower.style.left = fx + 'px';
+    follower.style.top = fy + 'px';
+    requestAnimationFrame(animCursor);
+  })();
 }
 
-// ── Navigation Scroll ─────────────────────────────────────────────────────
+// ── Nav Scroll ────────────────────────────────────────────────────────────
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav?.classList.toggle('scrolled', window.scrollY > 20);
-});
+}, { passive: true });
 
 // ── Mobile Menu ───────────────────────────────────────────────────────────
 const menuBtn = document.getElementById('menuBtn');
@@ -44,101 +59,91 @@ menuBtn?.addEventListener('click', () => {
   mobileMenu?.classList.toggle('open', menuOpen);
   const spans = menuBtn.querySelectorAll('span');
   if (menuOpen) {
-    spans[0].style.transform = 'translateY(4px) rotate(45deg)';
-    spans[1].style.transform = 'translateY(-4px) rotate(-45deg)';
+    spans[0].style.transform = 'translateY(3.5px) rotate(45deg)';
+    spans[1].style.transform = 'translateY(-3.5px) rotate(-45deg)';
   } else {
     spans[0].style.transform = '';
     spans[1].style.transform = '';
   }
 });
 
-// Close mobile menu on link click
 document.querySelectorAll('.mobile-link').forEach(link => {
   link.addEventListener('click', () => {
     mobileMenu?.classList.remove('open');
     menuOpen = false;
-    const spans = menuBtn?.querySelectorAll('span');
-    if (spans) { spans[0].style.transform = ''; spans[1].style.transform = ''; }
+    menuBtn?.querySelectorAll('span').forEach(s => s.style.transform = '');
   });
 });
 
 // ── Scroll Reveal ─────────────────────────────────────────────────────────
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
 
-document.querySelectorAll('.reveal, .reveal-card').forEach((el, i) => {
-  if (el.classList.contains('reveal-card')) {
-    el.style.transitionDelay = (i % 4) * 0.1 + 's';
-  }
-  revealObserver.observe(el);
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.05) + 's';
+  revealObs.observe(el);
 });
 
 // ── Counter Animation ─────────────────────────────────────────────────────
-function animateCounter(el) {
+function animCounter(el) {
   const target = parseInt(el.dataset.count, 10);
-  const duration = 1800;
+  const dur = 1800;
   const start = performance.now();
-  const update = (now) => {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.round(eased * target);
-    if (progress < 1) requestAnimationFrame(update);
+  const tick = now => {
+    const p = Math.min((now - start) / dur, 1);
+    el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+    if (p < 1) requestAnimationFrame(tick);
   };
-  requestAnimationFrame(update);
+  requestAnimationFrame(tick);
 }
 
-const statsObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
-      statsObserver.unobserve(entry.target);
+new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-count').forEach(animCounter);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.5 }).observe(document.querySelector('.stats') || document.createElement('div'));
 
-const statsSection = document.querySelector('.stats');
-if (statsSection) statsObserver.observe(statsSection);
-
-// ── Load Featured Videos (Home Page) ─────────────────────────────────────
+// ── Featured Videos (Home) ────────────────────────────────────────────────
 const featuredGrid = document.getElementById('featuredGrid');
 if (featuredGrid) {
   fetch('/api/videos')
     .then(r => r.json())
     .then(videos => {
       const featured = videos.filter(v => v.featured).slice(0, 3);
-      const toShow = featured.length > 0 ? featured : videos.slice(0, 3);
-      if (toShow.length === 0) {
-        featuredGrid.innerHTML = '<p style="color:var(--text-muted);text-align:center;grid-column:1/-1;padding:40px">Noch keine Projekte vorhanden.</p>';
+      const toShow = featured.length ? featured : videos.slice(0, 3);
+      if (!toShow.length) {
+        featuredGrid.innerHTML = '<p style="color:var(--text-2);text-align:center;grid-column:1/-1;padding:40px">No projects yet.</p>';
         return;
       }
       featuredGrid.innerHTML = '';
-      toShow.forEach((video, i) => {
-        const card = createVideoCard(video, i);
+      toShow.forEach((v, i) => {
+        const card = buildVideoCard(v, i);
         featuredGrid.appendChild(card);
-        setTimeout(() => card.classList.add('visible'), i * 150);
+        setTimeout(() => revealObs.observe(card), 50);
       });
     })
     .catch(() => {
-      featuredGrid.innerHTML = '<p style="color:var(--text-muted);text-align:center;grid-column:1/-1;padding:40px">Fehler beim Laden der Videos.</p>';
+      featuredGrid.innerHTML = '<p style="color:var(--text-2);text-align:center;grid-column:1/-1;padding:40px">Could not load videos.</p>';
     });
 }
 
-// ── Video Card Factory ────────────────────────────────────────────────────
-function createVideoCard(video, i = 0) {
+// ── Video Card Builder ────────────────────────────────────────────────────
+function buildVideoCard(video, i = 0) {
   const card = document.createElement('div');
-  card.className = 'video-card reveal-card';
-  card.style.transitionDelay = (i * 0.1) + 's';
-  card.dataset.category = video.category;
-  card.dataset.id = video.id;
+  card.className = 'video-card reveal';
+  card.style.transitionDelay = (i * 0.08) + 's';
+  card.dataset.category = video.category || '';
 
-  const thumbSrc = video.thumbnail ? `/uploads/${video.thumbnail}` : null;
-  const thumbHtml = thumbSrc
-    ? `<img class="video-card-thumb" src="${thumbSrc}" alt="${video.title}" loading="lazy">`
+  const thumbHtml = video.thumbnail
+    ? `<img class="video-card-thumb" src="/uploads/${video.thumbnail}" alt="${video.title}" loading="lazy">`
     : `<div class="video-card-no-thumb">▶</div>`;
 
   card.innerHTML = `
@@ -147,42 +152,37 @@ function createVideoCard(video, i = 0) {
       <div class="video-card-play">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       </div>
-      <div class="video-card-category">${video.category || 'Video'}</div>
+      <div class="video-card-cat">${video.category || 'Video'}</div>
       <h3 class="video-card-title">${video.title}</h3>
       <div class="video-card-meta">${video.client ? video.client + ' · ' : ''}${video.year || ''}</div>
     </div>
   `;
-
   card.addEventListener('click', () => openLightbox(video));
   return card;
 }
 
 // ── Lightbox ──────────────────────────────────────────────────────────────
 function openLightbox(video) {
-  const lightbox = document.getElementById('lightbox');
-  if (!lightbox) return;
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
   document.getElementById('lightboxTitle').textContent = video.title;
   document.getElementById('lightboxCategory').textContent = video.category || 'Video';
   document.getElementById('lightboxYear').textContent = video.year || '';
   document.getElementById('lightboxDesc').textContent = video.description || '';
-  const clientWrap = document.getElementById('lightboxClientWrap');
-  const clientEl = document.getElementById('lightboxClient');
-  if (video.client) {
-    clientEl.textContent = video.client;
-    clientWrap.style.display = '';
-  } else {
-    clientWrap.style.display = 'none';
-  }
+  const cw = document.getElementById('lightboxClientWrap');
+  const cl = document.getElementById('lightboxClient');
+  if (video.client) { cl.textContent = video.client; cw.style.display = ''; }
+  else { cw.style.display = 'none'; }
   const vid = document.getElementById('lightboxVideo');
   vid.src = `/uploads/${video.filename}`;
-  lightbox.classList.add('open');
+  lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
-  const lightbox = document.getElementById('lightbox');
-  if (!lightbox) return;
-  lightbox.classList.remove('open');
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  lb.classList.remove('open');
   document.body.style.overflow = '';
   const vid = document.getElementById('lightboxVideo');
   if (vid) { vid.pause(); vid.src = ''; }

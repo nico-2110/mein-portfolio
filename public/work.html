@@ -1,54 +1,61 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Work — Video Editor Portfolio</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="lang-en">
 
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
   <div class="grain"></div>
 
   <nav class="nav" id="nav">
-    <a href="/" class="nav-logo">
-      <span class="logo-text">YOUR<span class="logo-accent">NAME</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/work" class="nav-link active">Work</a>
-      <a href="/contact" class="nav-link">Contact</a>
+    <a href="/" class="nav-logo">YOUR<span class="logo-dot">.</span>NAME</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="/" class="nav-link"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+        <a href="/work" class="nav-link active"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+        <a href="/contact" class="nav-link"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-set-lang="en">EN</button>
+        <button class="lang-btn" data-set-lang="de">DE</button>
+      </div>
     </div>
     <button class="nav-menu-btn" id="menuBtn"><span></span><span></span></button>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/" class="mobile-link">Home</a>
-    <a href="/work" class="mobile-link">Work</a>
-    <a href="/contact" class="mobile-link">Contact</a>
+    <a href="/" class="mobile-link"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+    <a href="/work" class="mobile-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+    <a href="/contact" class="mobile-link"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+    <div class="mobile-lang">
+      <button class="mobile-lang-btn active" data-set-lang="en">EN</button>
+      <button class="mobile-lang-btn" data-set-lang="de">DE</button>
+    </div>
   </div>
 
-  <!-- Page Header -->
   <section class="page-hero">
-    <div class="page-hero-content">
-      <span class="section-tag animate-in" style="animation-delay:0.2s">Portfolio</span>
-      <h1 class="page-title animate-in" style="animation-delay:0.4s">
-        Selected<br><span class="title-outline">Work.</span>
-      </h1>
-      <p class="page-subtitle animate-in" style="animation-delay:0.6s">
-        Eine Auswahl meiner Projekte — von Werbung bis Dokumentation.
-      </p>
-    </div>
+    <div class="page-hero-orb"></div>
+    <span class="section-tag animate-in" style="animation-delay:.1s">Portfolio</span>
+    <h1 class="page-title animate-in" style="animation-delay:.25s">
+      <span data-lang="en">Selected<br><em>Work.</em></span>
+      <span data-lang="de">Ausgewählte<br><em>Projekte.</em></span>
+    </h1>
+    <p class="page-subtitle animate-in" style="animation-delay:.4s">
+      <span data-lang="en">A curated selection of my projects — from commercials to documentaries.</span>
+      <span data-lang="de">Eine kuratierte Auswahl meiner Projekte — von Werbung bis Dokumentation.</span>
+    </p>
   </section>
 
-  <!-- Filter Bar -->
   <section class="filter-section reveal">
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn active" data-filter="all"><span data-lang="en">All</span><span data-lang="de">Alle</span></button>
       <button class="filter-btn" data-filter="Commercial">Commercial</button>
       <button class="filter-btn" data-filter="Music Video">Music Video</button>
       <button class="filter-btn" data-filter="Documentary">Documentary</button>
@@ -56,29 +63,25 @@
     </div>
   </section>
 
-  <!-- Videos Grid -->
   <section class="work-section">
     <div class="work-grid" id="workGrid">
       <div class="loading-state">
         <div class="loading-spinner"></div>
-        <p>Videos laden...</p>
+        <p><span data-lang="en">Loading videos…</span><span data-lang="de">Videos werden geladen…</span></p>
       </div>
     </div>
     <div class="no-videos" id="noVideos" style="display:none">
-      <p>Noch keine Videos vorhanden. Check back soon.</p>
+      <p><span data-lang="en">No projects yet. Check back soon.</span><span data-lang="de">Noch keine Projekte vorhanden. Bald mehr.</span></p>
     </div>
   </section>
 
-  <!-- Video Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-overlay" id="lightboxOverlay"></div>
     <div class="lightbox-container">
       <button class="lightbox-close" id="lightboxClose">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
-      <div class="lightbox-video-wrap">
-        <video id="lightboxVideo" controls playsinline></video>
-      </div>
+      <div class="lightbox-video-wrap"><video id="lightboxVideo" controls playsinline></video></div>
       <div class="lightbox-info">
         <div class="lightbox-meta">
           <span class="lightbox-category" id="lightboxCategory"></span>
@@ -87,20 +90,20 @@
         <h2 class="lightbox-title" id="lightboxTitle"></h2>
         <p class="lightbox-desc" id="lightboxDesc"></p>
         <div class="lightbox-client" id="lightboxClientWrap">
-          <span>Client:</span> <strong id="lightboxClient"></strong>
+          <span data-lang="en">Client:</span><span data-lang="de">Kunde:</span> <strong id="lightboxClient"></strong>
         </div>
       </div>
     </div>
   </div>
 
   <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">YOUR<span>NAME</span></div>
-      <p class="footer-tagline">Making every frame count.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">YOUR<span>.</span>NAME</div>
+      <p class="footer-tagline"><span data-lang="en">Making every frame count.</span><span data-lang="de">Jedes Bild zählt.</span></p>
       <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/work">Work</a>
-        <a href="/contact">Contact</a>
+        <a href="/"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+        <a href="/work"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+        <a href="/contact"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
       </div>
       <p class="footer-copy">© 2025 YourName. All rights reserved.</p>
     </div>
