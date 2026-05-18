@@ -6,15 +6,105 @@ function setLang(lang, save = true) {
   document.body.classList.remove('lang-en', 'lang-de');
   document.body.classList.add('lang-' + lang);
   if (save) localStorage.setItem('lang', lang);
-
-  document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
+  document.querySelectorAll('[data-set-lang]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.setLang === lang);
   });
 }
-
 document.querySelectorAll('[data-set-lang]').forEach(btn => {
   btn.addEventListener('click', () => setLang(btn.dataset.setLang));
 });
+
+// ── Particle Network (the "Lamellen" effect) ──────────────────────────────
+const canvas = document.getElementById('particle-canvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let W = canvas.width = window.innerWidth;
+  let H = canvas.height = window.innerHeight;
+  const ACCENT = '#bdee63';
+  const COUNT = Math.min(Math.floor(W * H / 14000), 80);
+  let particles = [];
+  let mouse = { x: W / 2, y: H / 2 };
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.size = Math.random() * 2 + 0.5;
+      this.opacity = Math.random() * 0.4 + 0.1;
+      this.baseOpacity = this.opacity;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > W) this.vx *= -1;
+      if (this.y < 0 || this.y > H) this.vy *= -1;
+      // React to mouse
+      const dx = mouse.x - this.x;
+      const dy = mouse.y - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        this.opacity = Math.min(this.baseOpacity + 0.4, 0.7);
+        this.x -= dx * 0.002;
+        this.y -= dy * 0.002;
+      } else {
+        this.opacity += (this.baseOpacity - this.opacity) * 0.05;
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(189,238,99,${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+
+  function drawLines() {
+    const MAX_DIST = 140;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MAX_DIST) {
+          const alpha = (1 - dist / MAX_DIST) * 0.18;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(189,238,99,${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawLines();
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    particles = [];
+    for (let i = 0; i < Math.min(Math.floor(W * H / 14000), 80); i++) {
+      particles.push(new Particle());
+    }
+  }, { passive: true });
+}
 
 // ── Custom Cursor ─────────────────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
@@ -26,10 +116,9 @@ if (cursor && follower) {
     mx = e.clientX; my = e.clientY;
     cursor.style.left = mx + 'px';
     cursor.style.top = my + 'px';
-  });
+  }, { passive: true });
 
-  const hoverEls = document.querySelectorAll('a, button, .video-card, .filter-btn, .service-card, .lang-btn, .mobile-lang-btn');
-  hoverEls.forEach(el => {
+  document.querySelectorAll('a, button, .video-card, .filter-btn, .service-card').forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
   });
@@ -59,8 +148,8 @@ menuBtn?.addEventListener('click', () => {
   mobileMenu?.classList.toggle('open', menuOpen);
   const spans = menuBtn.querySelectorAll('span');
   if (menuOpen) {
-    spans[0].style.transform = 'translateY(3.5px) rotate(45deg)';
-    spans[1].style.transform = 'translateY(-3.5px) rotate(-45deg)';
+    spans[0].style.transform = 'translateY(3.25px) rotate(45deg)';
+    spans[1].style.transform = 'translateY(-3.25px) rotate(-45deg)';
   } else {
     spans[0].style.transform = '';
     spans[1].style.transform = '';
@@ -86,7 +175,7 @@ const revealObs = new IntersectionObserver(entries => {
 }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
 
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
-  el.style.transitionDelay = (i * 0.05) + 's';
+  el.style.transitionDelay = (i * 0.04) + 's';
   revealObs.observe(el);
 });
 
@@ -103,13 +192,17 @@ function animCounter(el) {
   requestAnimationFrame(tick);
 }
 
-new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.stat-count').forEach(animCounter);
-    }
-  });
-}, { threshold: 0.5 }).observe(document.querySelector('.stats') || document.createElement('div'));
+const statsEl = document.querySelector('.stats');
+if (statsEl) {
+  new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.stat-count').forEach(animCounter);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 }).observe(statsEl);
+}
 
 // ── Featured Videos (Home) ────────────────────────────────────────────────
 const featuredGrid = document.getElementById('featuredGrid');
@@ -120,7 +213,7 @@ if (featuredGrid) {
       const featured = videos.filter(v => v.featured).slice(0, 3);
       const toShow = featured.length ? featured : videos.slice(0, 3);
       if (!toShow.length) {
-        featuredGrid.innerHTML = '<p style="color:var(--text-2);text-align:center;grid-column:1/-1;padding:40px">No projects yet.</p>';
+        featuredGrid.innerHTML = '<p style="color:var(--text-2);text-align:center;grid-column:1/-1;padding:60px">No projects yet — upload your first video in the admin panel.</p>';
         return;
       }
       featuredGrid.innerHTML = '';
@@ -131,11 +224,11 @@ if (featuredGrid) {
       });
     })
     .catch(() => {
-      featuredGrid.innerHTML = '<p style="color:var(--text-2);text-align:center;grid-column:1/-1;padding:40px">Could not load videos.</p>';
+      featuredGrid.innerHTML = '<p style="color:var(--text-2);text-align:center;grid-column:1/-1;padding:60px">Could not load videos.</p>';
     });
 }
 
-// ── Video Card Builder ────────────────────────────────────────────────────
+// ── Video Card ────────────────────────────────────────────────────────────
 function buildVideoCard(video, i = 0) {
   const card = document.createElement('div');
   card.className = 'video-card reveal';

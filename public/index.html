@@ -3,35 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — Video Editor</title>
+  <title>YOUR.NAME — Video Editor</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="lang-en">
 
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
-  <div class="grain"></div>
 
-  <!-- Nav -->
+  <!-- NAV -->
   <nav class="nav" id="nav">
     <a href="/" class="nav-logo">YOUR<span class="logo-dot">.</span>NAME</a>
+    <div class="nav-center">
+      <a href="/" class="nav-link active"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
+      <a href="/work" class="nav-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
+      <a href="/contact" class="nav-link"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+    </div>
     <div class="nav-right">
-      <div class="nav-links">
-        <a href="/" class="nav-link active"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
-        <a href="/work" class="nav-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
-        <a href="/contact" class="nav-link"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
-      </div>
       <div class="lang-toggle">
         <button class="lang-btn active" data-set-lang="en">EN</button>
         <button class="lang-btn" data-set-lang="de">DE</button>
       </div>
+      <a href="/contact" class="nav-cta"><span data-lang="en">Get in touch</span><span data-lang="de">Kontakt</span></a>
     </div>
     <button class="nav-menu-btn" id="menuBtn"><span></span><span></span></button>
   </nav>
 
-  <!-- Mobile Menu -->
+  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="/" class="mobile-link"><span data-lang="en">Home</span><span data-lang="de">Start</span></a>
     <a href="/work" class="mobile-link"><span data-lang="en">Work</span><span data-lang="de">Projekte</span></a>
@@ -42,28 +42,70 @@
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-      <div class="hero-grid"></div>
+    <!-- Spotlight SVG beam -->
+    <div class="hero-spotlight">
+      <svg viewBox="0 0 3787 2842" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#spotlight-filter)">
+          <ellipse cx="1924" cy="273" rx="1924" ry="273"
+            transform="matrix(-0.822 -0.569 -0.569 0.822 3631 2291)"
+            fill="#bdee63"/>
+        </g>
+        <defs>
+          <filter id="spotlight-filter" x="-10%" y="-10%" width="120%" height="120%"
+            filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+            <feGaussianBlur stdDeviation="151" result="blur"/>
+          </filter>
+        </defs>
+      </svg>
     </div>
+
+    <!-- Particle canvas -->
+    <canvas id="particle-canvas"></canvas>
+
     <div class="hero-content">
-      <div class="hero-badge animate-in" style="animation-delay:.1s">
-        <span class="dot"></span>
-        <span data-lang="en">Available for new projects</span>
-        <span data-lang="de">Offen für neue Projekte</span>
+      <!-- Eyebrow badge -->
+      <div class="hero-eyebrow animate-in" style="animation-delay:.1s">
+        <div class="hero-eyebrow-tag">
+          <span class="dot"></span>
+          <span data-lang="en">Available for new projects</span>
+          <span data-lang="de">Offen für neue Projekte</span>
+        </div>
       </div>
-      <h1 class="hero-title animate-in" style="animation-delay:.25s">
-        <span data-lang="en">Crafting stories<br><em>frame by frame.</em></span>
-        <span data-lang="de">Geschichten erzählen<br><em>Bild für Bild.</em></span>
+
+      <!-- Main title with looping word -->
+      <h1>
+        <div class="hero-title-line">
+          <span data-lang="en">Crafting stories</span>
+          <span data-lang="de">Geschichten</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+          <div class="hero-title-line">
+            <span data-lang="en">into</span>
+            <span data-lang="de">werden zu</span>
+          </div>
+          <div class="hero-loop" aria-label="looping words">
+            <div class="hero-loop-inner" id="loopInner">
+              <div class="hero-loop-item"><span data-lang="en">commercials.</span><span data-lang="de">Werbung.</span></div>
+              <div class="hero-loop-item"><span data-lang="en">music videos.</span><span data-lang="de">Musikvideos.</span></div>
+              <div class="hero-loop-item"><span data-lang="en">documentaries.</span><span data-lang="de">Dokus.</span></div>
+              <div class="hero-loop-item"><span data-lang="en">experiences.</span><span data-lang="de">Erlebnissen.</span></div>
+              <div class="hero-loop-item"><span data-lang="en">emotions.</span><span data-lang="de">Emotionen.</span></div>
+              <div class="hero-loop-item"><span data-lang="en">memories.</span><span data-lang="de">Erinnerungen.</span></div>
+              <!-- duplicate for seamless loop -->
+              <div class="hero-loop-item"><span data-lang="en">commercials.</span><span data-lang="de">Werbung.</span></div>
+            </div>
+          </div>
+        </div>
       </h1>
-      <p class="hero-subtitle animate-in" style="animation-delay:.4s">
-        <span data-lang="en">Video Editor — turning raw footage into cinematic experiences that move people and leave a lasting impression.</span>
-        <span data-lang="de">Videoeditor — Rohmaterial wird zu cinematischen Erlebnissen, die Menschen bewegen und in Erinnerung bleiben.</span>
+
+      <p class="hero-subtitle">
+        <span data-lang="en">Video Editor based in Berlin — turning raw footage into cinematic experiences that move people and leave a lasting impression.</span>
+        <span data-lang="de">Videoeditor aus Berlin — Rohmaterial wird zu cinematischen Erlebnissen, die Menschen bewegen und in Erinnerung bleiben.</span>
       </p>
-      <div class="hero-cta animate-in" style="animation-delay:.55s">
+
+      <div class="hero-cta">
         <a href="/work" class="btn-primary">
           <span data-lang="en">View My Work</span>
           <span data-lang="de">Meine Projekte</span>
@@ -75,49 +117,56 @@
         </a>
       </div>
     </div>
-    <div class="hero-scroll animate-in" style="animation-delay:.9s">
-      <div class="scroll-track"></div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
       <span>Scroll</span>
     </div>
   </section>
 
-  <!-- Marquee -->
+  <!-- MARQUEE -->
   <div class="marquee-section">
-    <div class="marquee-track">
-      <span class="marquee-item">Commercial Editing <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Music Videos <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Documentary <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Social Media Content <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Color Grading <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Motion Graphics <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Commercial Editing <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Music Videos <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Documentary <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Social Media Content <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Color Grading <span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Motion Graphics <span class="marquee-sep">✦</span></span>
+    <div class="marquee-inner">
+      <div class="marquee-track">
+        <span class="marquee-item">Commercial Editing<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Music Videos<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Documentary<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Color Grading<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Social Media<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Motion Graphics<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Brand Content<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Post Production<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Commercial Editing<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Music Videos<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Documentary<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Color Grading<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Social Media<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Motion Graphics<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Brand Content<span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Post Production<span class="marquee-dot">✦</span></span>
+      </div>
     </div>
   </div>
 
-  <!-- Stats -->
+  <!-- STATS -->
   <section class="stats reveal">
     <div class="stats-inner">
       <div class="stat-item">
         <div class="stat-number"><span class="stat-count" data-count="50">0</span><span class="stat-plus">+</span></div>
-        <p class="stat-label"><span data-lang="en">Projects completed</span><span data-lang="de">Projekte abgeschlossen</span></p>
+        <div class="stat-label"><span data-lang="en">Projects completed</span><span data-lang="de">Projekte abgeschlossen</span></div>
       </div>
       <div class="stat-item">
         <div class="stat-number"><span class="stat-count" data-count="5">0</span><span class="stat-plus">+</span></div>
-        <p class="stat-label"><span data-lang="en">Years of experience</span><span data-lang="de">Jahre Erfahrung</span></p>
+        <div class="stat-label"><span data-lang="en">Years of experience</span><span data-lang="de">Jahre Erfahrung</span></div>
       </div>
       <div class="stat-item">
         <div class="stat-number"><span class="stat-count" data-count="30">0</span><span class="stat-plus">+</span></div>
-        <p class="stat-label"><span data-lang="en">Happy clients</span><span data-lang="de">Zufriedene Kunden</span></p>
+        <div class="stat-label"><span data-lang="en">Happy clients</span><span data-lang="de">Zufriedene Kunden</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Work -->
+  <!-- FEATURED WORK -->
   <section class="featured reveal">
     <div class="section-header">
       <div class="section-tag"><span data-lang="en">Selected Work</span><span data-lang="de">Ausgewählte Projekte</span></div>
@@ -133,14 +182,14 @@
     </div>
     <div class="featured-footer">
       <a href="/work" class="btn-outline">
-        <span data-lang="en">All Projects</span>
+        <span data-lang="en">View All Projects</span>
         <span data-lang="de">Alle Projekte</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </section>
 
-  <!-- About Teaser -->
+  <!-- ABOUT -->
   <section class="about-teaser">
     <div class="about-visual reveal-left">
       <div class="about-frame">
@@ -159,10 +208,14 @@
         <span data-lang="en">A passion for the<br><em>perfect cut.</em></span>
         <span data-lang="de">Eine Leidenschaft für<br><em>den perfekten Schnitt.</em></span>
       </h2>
-      <p data-lang="en">I'm a video editor with a sharp sense for rhythm, pacing, and visual storytelling. Every project is more than just cutting — it's creating an emotion that resonates.</p>
-      <p data-lang="de">Ich bin Videoeditor mit einem ausgeprägten Gespür für Rhythmus, Pacing und visuelles Storytelling. Jedes Projekt ist mehr als nur Schnitt — es geht darum, eine Emotion zu erschaffen.</p>
-      <p data-lang="en">From commercials to music videos and documentaries — I bring your vision to life with precision and care.</p>
-      <p data-lang="de">Von Werbefilmen über Musikvideos bis hin zu Dokumentationen — ich setze deine Vision präzise und leidenschaftlich um.</p>
+      <p>
+        <span data-lang="en">I'm a video editor with a sharp sense for rhythm, pacing, and visual storytelling. Every project is more than just cutting — it's creating an emotion that resonates.</span>
+        <span data-lang="de">Ich bin Videoeditor mit einem ausgeprägten Gespür für Rhythmus, Pacing und visuelles Storytelling. Jedes Projekt ist mehr als nur Schnitt — es geht darum, eine Emotion zu erschaffen.</span>
+      </p>
+      <p>
+        <span data-lang="en">From commercials to music videos and documentaries — I bring your vision to life with precision and care.</span>
+        <span data-lang="de">Von Werbefilmen über Musikvideos bis hin zu Dokumentationen — ich setze deine Vision präzise und leidenschaftlich um.</span>
+      </p>
       <a href="/contact" class="btn-primary">
         <span data-lang="en">Start a Project</span>
         <span data-lang="de">Projekt anfragen</span>
@@ -171,13 +224,13 @@
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- SERVICES -->
   <section class="services reveal">
     <div class="section-header">
       <div class="section-tag">Services</div>
       <h2 class="section-title">
         <span data-lang="en">What I <em>Do</em></span>
-        <span data-lang="de">Was ich <em>biete</em></span>
+        <span data-lang="de">Was ich <em>anbiete</em></span>
       </h2>
     </div>
     <div class="services-grid">
@@ -204,7 +257,7 @@
     </div>
   </section>
 
-  <!-- Lightbox -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-overlay" id="lightboxOverlay"></div>
     <div class="lightbox-container">
@@ -226,7 +279,7 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-logo">YOUR<span>.</span>NAME</div>
