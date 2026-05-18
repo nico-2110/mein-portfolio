@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Video Editor</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Grain Overlay -->
+  <div class="grain"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="/" class="nav-logo">
+      <span class="logo-text">YOUR<span class="logo-accent">NAME</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link active">Home</a>
+      <a href="/work" class="nav-link">Work</a>
+      <a href="/contact" class="nav-link">Contact</a>
+    </div>
+    <button class="nav-menu-btn" id="menuBtn">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/" class="mobile-link">Home</a>
+    <a href="/work" class="mobile-link">Work</a>
+    <a href="/contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-lines"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag animate-in" style="animation-delay:0.2s">
+        <span class="dot"></span> Available for projects
+      </div>
+      <h1 class="hero-title animate-in" style="animation-delay:0.4s">
+        Crafting stories<br>
+        <span class="title-outline">frame by frame.</span>
+      </h1>
+      <p class="hero-subtitle animate-in" style="animation-delay:0.6s">
+        Video Editor — Turning raw footage into<br>cinematic experiences that move people.
+      </p>
+      <div class="hero-cta animate-in" style="animation-delay:0.8s">
+        <a href="/work" class="btn-primary">
+          <span>View My Work</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/contact" class="btn-ghost">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-scroll animate-in" style="animation-delay:1.2s">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats reveal">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span>
+        <p>Projekte abgeschlossen</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
+        <p>Jahre Erfahrung</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="30">0</span><span class="stat-plus">+</span>
+        <p>Zufriedene Kunden</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  <section class="featured reveal">
+    <div class="section-header">
+      <span class="section-tag">Selected Work</span>
+      <h2 class="section-title">Recent Projects</h2>
+    </div>
+    <div class="featured-grid" id="featuredGrid">
+      <!-- dynamisch via JS -->
+      <div class="loading-skeleton"></div>
+      <div class="loading-skeleton"></div>
+      <div class="loading-skeleton"></div>
+    </div>
+    <div class="featured-footer">
+      <a href="/work" class="btn-outline">
+        <span>All Projects</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Teaser -->
+  <section class="about-teaser reveal">
+    <div class="about-visual">
+      <div class="about-frame">
+        <div class="frame-inner">
+          <div class="frame-text">
+            <span>VIDEO</span>
+            <span>EDITING</span>
+            <span>SINCE</span>
+            <span class="frame-year">2019</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <span class="section-tag">About</span>
+      <h2 class="section-title">Passion for the<br><em>perfect cut.</em></h2>
+      <p>Ich bin Videoeditor mit einem Gespür für Rhythmus, Pacing und visuelles Storytelling. Jedes Projekt ist für mich mehr als nur Schnitt — es ist das Erschaffen einer Emotion.</p>
+      <p>Von Werbefilmen über Musikvideos bis hin zu Dokumentationen — ich bringe deine Vision auf den Punkt.</p>
+      <a href="/contact" class="btn-primary">
+        <span>Projekt anfragen</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services reveal">
+    <div class="section-header">
+      <span class="section-tag">Services</span>
+      <h2 class="section-title">What I Do</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal-card">
+        <div class="service-icon">✦</div>
+        <h3>Commercial Editing</h3>
+        <p>Werbefilme & Brand Content mit maximalem Impact</p>
+      </div>
+      <div class="service-card reveal-card">
+        <div class="service-icon">◈</div>
+        <h3>Music Videos</h3>
+        <p>Visuelle Welten die deinen Sound perfekt ergänzen</p>
+      </div>
+      <div class="service-card reveal-card">
+        <div class="service-icon">◇</div>
+        <h3>Documentary</h3>
+        <p>Authentisches Storytelling das berührt und bewegt</p>
+      </div>
+      <div class="service-card reveal-card">
+        <div class="service-icon">❋</div>
+        <h3>Social Media</h3>
+        <p>Optimierte Kurzformate für maximale Reichweite</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">YOUR<span>NAME</span></div>
+      <p class="footer-tagline">Making every frame count.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/work">Work</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <p class="footer-copy">© 2025 YourName. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

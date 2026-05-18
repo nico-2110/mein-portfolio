@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Video Editor Portfolio</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="grain"></div>
+
+  <nav class="nav" id="nav">
+    <a href="/" class="nav-logo">
+      <span class="logo-text">YOUR<span class="logo-accent">NAME</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/work" class="nav-link">Work</a>
+      <a href="/contact" class="nav-link active">Contact</a>
+    </div>
+    <button class="nav-menu-btn" id="menuBtn"><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/" class="mobile-link">Home</a>
+    <a href="/work" class="mobile-link">Work</a>
+    <a href="/contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-tag animate-in" style="animation-delay:0.2s">Let's Connect</span>
+      <h1 class="page-title animate-in" style="animation-delay:0.4s">
+        Got a project<br><span class="title-outline">in mind?</span>
+      </h1>
+      <p class="page-subtitle animate-in" style="animation-delay:0.6s">
+        Ich freue mich über jede Anfrage — egal wie groß oder klein.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-layout">
+
+      <!-- Info Side -->
+      <div class="contact-info reveal">
+        <h3>Let's work together</h3>
+        <p>Ob Werbeclip, Musikvideo, Dokumentation oder Social-Media-Content — ich höre dir zu und setze deine Vision präzise um.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">✉</div>
+            <div>
+              <span class="contact-label">E-Mail</span>
+              <a href="mailto:deine@email.com" class="contact-value">deine@email.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <span class="contact-label">Location</span>
+              <span class="contact-value">Berlin, Deutschland</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⏱</div>
+            <div>
+              <span class="contact-label">Response Time</span>
+              <span class="contact-value">Innerhalb 24h</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-social">
+          <a href="#" class="social-link" target="_blank">Instagram</a>
+          <a href="#" class="social-link" target="_blank">Vimeo</a>
+          <a href="#" class="social-link" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- Form Side -->
+      <div class="contact-form-wrap reveal">
+        <div id="formSuccess" class="form-success" style="display:none">
+          <div class="success-icon">✓</div>
+          <h3>Nachricht gesendet!</h3>
+          <p>Ich melde mich so schnell wie möglich.</p>
+        </div>
+        <div id="formWrap">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" placeholder="Dein Name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-Mail *</label>
+              <input type="email" id="email" placeholder="deine@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project">Projekttyp</label>
+            <select id="project">
+              <option value="">Bitte auswählen</option>
+              <option value="Commercial">Commercial / Werbefilm</option>
+              <option value="Music Video">Musikvideo</option>
+              <option value="Documentary">Dokumentation</option>
+              <option value="Social Media">Social Media Content</option>
+              <option value="Other">Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Nachricht *</label>
+            <textarea id="message" rows="5" placeholder="Erzähl mir von deinem Projekt..."></textarea>
+          </div>
+          <div id="formError" class="form-error" style="display:none"></div>
+          <button class="btn-primary btn-submit" id="submitBtn">
+            <span>Nachricht senden</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">YOUR<span>NAME</span></div>
+      <p class="footer-tagline">Making every frame count.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/work">Work</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <p class="footer-copy">© 2025 YourName. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/contact.js"></script>
+</body>
+</html>
