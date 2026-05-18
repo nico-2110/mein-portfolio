@@ -8,7 +8,7 @@ const fs = require('fs');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-change-in-production';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
@@ -241,7 +241,7 @@ app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'public', 'c
 app.get('/admin-panel', (req, res) => res.sendFile(path.join(__dirname, 'admin', 'index.html')));
 
 // ─── Start ─────────────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🎬 Portfolio läuft auf http://localhost:${PORT}`);
   console.log(`🔧 Admin-Panel: http://localhost:${PORT}/admin-panel`);
   console.log(`\nAdmin-Passwort aus .env: ${ADMIN_PASSWORD}\n`);
